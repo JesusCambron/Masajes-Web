@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Navbar, Container, Row, Col, Button, Table } from 'react-bootstrap';
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+import { Navbar, Container, Row, Col, Button, Table } from 'react-bootstrap';
 
 function App() {
   return (
@@ -13,28 +13,6 @@ function App() {
       </Navbar>
 
       <Container fluid style={{ backgroundColor: "SILVER" }} className="pt-3">
-        <Row className="justify-content-md-center">
-          <Col md={10} >
-            <Button variant="primary" size="lg" className="btn-block">
-              Agregar Cita
-            </Button>
-          </Col>
-        </Row>
-        <Row className="pt-3">
-          <Col>
-            <Button variant="success" size="lg" className="btn-block">
-              Modificar Cita
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="danger" size="lg" className="btn-block">
-              Eliminar Cita
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-
-      <Container fluid style={{ backgroundColor: "SILVER" }} className="pt-3 my-3">
         <Row >
           <Col>
 
@@ -96,7 +74,27 @@ function App() {
           </Col>
         </Row>
 
-      </Container>      
+      </Container>
+
+      <Container fluid style={{ backgroundColor: "SILVER" }} className="pt-3 border border-top" >
+      <Row>
+          <Col > 
+            <Button variant="success" size="lg" className="float-right border border-primary">
+              Agregar Cita
+            </Button>
+          </Col>                
+          <Col>
+            <Button variant="success" size="lg" >
+              Modificar Cita
+            </Button>
+          </Col>
+          <Col>
+            <Button variant="danger" size="lg" className="float-left" >
+              Eliminar Cita
+            </Button>
+          </Col>
+        </Row>
+      </Container>    
 
     </div>
   );
