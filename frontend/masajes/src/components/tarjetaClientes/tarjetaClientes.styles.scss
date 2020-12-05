@@ -1,0 +1,32 @@
+.tarjeta-cliente{
+    border-radius: 5px;
+    width: 100%;
+    height: 150px;
+    border: 1px solid black;
+    background-color: #E7E3DA;
+    margin: auto;
+    padding: 10px 5px;
+    box-shadow: 5px 5px 10px;
+    transition: all 1s;
+
+    &:hover{
+        transform: scale(1.05);
+    }
+
+    .nombre-cliente{
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .cliente-datos{
+        .cliente-correo{
+            font-size: 14px;
+        }
+        .cliente-celular{
+            font-weight: lighter;
+            font-size: 13px;
+        }
+    }
+
+    
+}
