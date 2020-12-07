@@ -15,7 +15,6 @@ class AgregarClientes extends Component {
             listaClientes:[]
         }
     }
-
     handleSubmit = e => {
         e.preventDefault()
         
@@ -95,14 +94,14 @@ class AgregarClientes extends Component {
     componentDidMount(){
         if(this.props.location.esEditar||this.props.location.esEliminar){
 
-            const data= this.props.location.clienteRecomendador ? 
+            const data= this.props.location.cliente.clienteRecomendador.length>0 ? 
         {
             nombre:this.props.location.cliente.nombre,
             apellido:this.props.location.cliente.apellido,
             edad:this.props.location.cliente.edad,
             correo:this.props.location.cliente.correo,
             celular:this.props.location.cliente.celular,
-            clienteRecomendador:this.props.location.cliente.clienteRecomendador[0],
+            clienteRecomendador:this.props.location.cliente.clienteRecomendador[0]._id,
         }
         :
         {
@@ -149,17 +148,14 @@ class AgregarClientes extends Component {
                     </div>
                         <label htmlFor="clienteRecomendador" className={`form-label`}>Cliente recomendador</label>
                         <select name="clienteRecomendador" className='form-select' onChange={this.handleChange} id="clienteRecomendador">
-                            <option 
-                            value="">
-                            {   
-                            this.props.location.esEditar||this.props.location.esEliminar?
-                                this.props.location.cliente.clienteRecomendador?
-                                    this.props.location.cliente.clienteRecomendador[0].nombre
-                                    :"Sin cliente recomendador"
+                            {
+                                this.props.location.esEditar||this.props.location.esEliminar?
+                                    this.props.location.cliente.clienteRecomendador.length>0?
+                                        <option value={this.props.location.cliente.clienteRecomendador[0]._id}>{this.props.location.cliente.clienteRecomendador[0].nombre}</option>
+                                        :''
                                 :
-                                ""
+                                <option value=""></option>
                             }
-                            </option>
                             {
                                 this.props.location.esEditar?
                                     <option value=""></option>
