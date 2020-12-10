@@ -54,7 +54,8 @@ export default class Cita extends Component {
     }
 
     onChangeCitaTime=(e)=>{
-        this.setState({hora:e.target.value})
+        const hora=e.target.value.split(':')
+        this.setState({hora:`${hora[0]}:${hora[1]}:00`})
     }
 
     handleOption=(e)=>{
@@ -98,32 +99,36 @@ export default class Cita extends Component {
     }
 
     agregarCita=()=>{
-        
         fetch(`http://localhost:3000/masajes/citas`,{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
                 cliente:this.state.idCliente,
                 servicios:[this.state.idServicio],
-                fecha:`${this.state.fecha} ${this.state.hora}:00`,
+                fecha:`${this.state.fecha} ${this.state.hora}`,
                 duracion:this.state.duracion,
                 total:this.state.total
             })
         })
         .then(res=>res.text())
-        .then(cita=>console.log(`cita ${cita} agregada`))
-        .catch(err=>console.error(err))
-        this.forceUpdate()
-        fetch(`http://localhost:3000/masajes/citas`)
+        .then(function(data) {
+            return fetch(`http://localhost:3000/masajes/citas`)
+        })
         .then(res=>res.json())
         .then(cita=>
             this.setState({citas:cita})
         )
+        .catch(err=>console.error(err))
     }
 
     componentDidUpdate(prevprops,prevstate){
         if(prevstate.citas!==this.state.citas){
-            return true
+            const citasFil=this.state.citas.filter(cita=>
+                cita.fecha.split('T')[0]===this.state.fecha
+            )
+            this.setState({
+                citas_filtradas:citasFil 
+            })
         }
         return false
     }
