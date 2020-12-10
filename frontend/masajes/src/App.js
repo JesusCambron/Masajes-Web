@@ -9,6 +9,7 @@ import AgregarClientes from './pages/clientes/agregarClientes/agregarClientes.co
 import ObtenerClientes from './pages/clientes/obtenerClientes/obtenerClientes.component'
 import EditarClientes from './pages/clientes/editarClientes/editarClientes.component';
 import EliminarClientes from './pages/clientes/eliminarClientes/eliminarClientes.component';
+import Cita from './pages/citas/cita.component';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/clientes_obtenerClientes' component={ObtenerClientes}/>
         <Route path='/clientes_editar' component={EditarClientes}/>
         <Route path='/clientes_eliminar' component={EliminarClientes}/>
+        <Route path='/citas' component={Cita}/>
       </Switch>
     </div>
   );

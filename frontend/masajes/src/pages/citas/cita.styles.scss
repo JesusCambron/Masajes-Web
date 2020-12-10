@@ -1,0 +1,28 @@
+.citas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .table-citas{
+        margin-top: 20px;
+        border-collapse: collapse;
+        width: 80%;
+        
+        th,td{
+            padding: 15px 15px;
+            text-align: left;
+        }
+        th{
+            background-color: #1A0BC1;
+            color: white;
+        }
+        td{
+            background-color: white;
+        }
+    }
+
+    .citas-botones{
+        margin-top: 20px;
+    }
+}
