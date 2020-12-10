@@ -16,11 +16,11 @@ const agregar = async (req, res) => {
         {fecha:{$gte:fechaInicio},
         fechaFin:{$lte:fechaFinal}},
         
-        {fecha:{$gte:fechaInicio},
-        fecha:{$lte:fechaFinal}},
+        // {fecha:{$gte:fechaInicio},
+        // fecha:{$lte:fechaFinal}},
         
-        {fechaFinal:{$gte:fechaInicio},
-        fechaFinal:{$lte:fechaFinal}},
+        // {fechaFinal:{$gte:fechaInicio},
+        // fechaFinal:{$lte:fechaFinal}},
     ]});
 
     if(!citaMismaHora) {

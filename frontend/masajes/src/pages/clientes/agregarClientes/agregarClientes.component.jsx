@@ -17,7 +17,7 @@ class AgregarClientes extends Component {
     }
     handleSubmit = e => {
         e.preventDefault()
-        
+    
         const data= this.state.clienteRecomendador.length>0 ? 
         {
             nombre:this.state.nombre,
@@ -35,7 +35,6 @@ class AgregarClientes extends Component {
             correo:this.state.correo,
             celular:this.state.celular,
         }
-
 
         if(this.props.location.esEditar){
             fetch(`http://localhost:3000/masajes/clientes/${this.props.location.cliente._id}`,{
@@ -121,7 +120,6 @@ class AgregarClientes extends Component {
         .then(users=>this.setState({listaClientes:users}))
         .catch(err=>console.log(err))
     }
-
     render() {
         return (
             <div className='agregar-clientes'>
@@ -150,7 +148,7 @@ class AgregarClientes extends Component {
                         <select name="clienteRecomendador" className='form-select' onChange={this.handleChange} id="clienteRecomendador">
                             {
                                 this.props.location.esEditar||this.props.location.esEliminar?
-                                    this.props.location.cliente.clienteRecomendador.length>0?
+                                    this.props.location.cliente.clienteRecomendador.length>0||this.props.location.cliente.clienteRecomendador==null?
                                         <option value={this.props.location.cliente.clienteRecomendador[0]._id}>{this.props.location.cliente.clienteRecomendador[0].nombre}</option>
                                         :''
                                 :

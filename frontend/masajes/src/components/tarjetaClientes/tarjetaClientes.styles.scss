@@ -19,14 +19,23 @@
     }
 
     .cliente-datos{
+        margin: 5px;
         .cliente-correo{
             font-size: 14px;
         }
         .cliente-celular{
             font-weight: lighter;
-            font-size: 13px;
+            font-size: 13px;                            
         }
     }
-
-    
+    .btn-cliente{        
+        padding: .2rem .75rem;
+        border-radius: .25rem;
+        background-color: #322828;
+        color: #fff;
+        transition: background-color .15s ease-in-out;
+    }
+   
 }
+
+
