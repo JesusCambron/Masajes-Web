@@ -1,0 +1,7 @@
+.grid-clientes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 50px;
+    row-gap: 50px;
+    margin-top: 50px;
+}
