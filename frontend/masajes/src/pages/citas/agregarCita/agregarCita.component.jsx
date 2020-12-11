@@ -2,7 +2,7 @@ import React from 'react';
 
 import './agregarCita.styles.scss'
 
-const AgregarCita = ({clientes,servicios,agregarcliente,agregarservicio,duracion,total,agregarCita}) => (
+const AgregarCita = ({clientes,servicios,agregarcliente,agregarservicio,duracion,total,agregarCita,mensaje}) => (
             <div className='agregara-form'>
                 <select className='btn-agregar' name="" id="" onChange={agregarcliente}>
                     <option></option>
@@ -25,6 +25,9 @@ const AgregarCita = ({clientes,servicios,agregarcliente,agregarservicio,duracion
                 <label htmlFor="total">Total</label>
                 <input type="text" name="total" readOnly value={total}></input>
                 <button className='btn-agregar' onClick={agregarCita}>Agregar</button>
+                <div>
+                    {mensaje}
+                </div>
             </div>
     );
 
