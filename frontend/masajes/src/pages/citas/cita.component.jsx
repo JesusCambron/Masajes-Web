@@ -21,7 +21,8 @@ export default class Cita extends Component {
             fecha:'',
             hora:'',
             duracion:'',
-            total:''
+            total:'',
+            mensajeAgregar: ''
         }
     }
 
@@ -111,7 +112,12 @@ export default class Cita extends Component {
             })
         })
         .then(res=>res.text())
-        .then(function(data) {
+        .then(data=> {
+            if(data!=='La cita ha sido registrada'){
+                this.setState({mensajeAgregar:'Error al agregar'})    
+            }else{
+                this.setState({mensajeAgregar:'Cita agregada con éxito'})    
+            }
             return fetch(`http://localhost:3000/masajes/citas`)
         })
         .then(res=>res.json())
@@ -169,7 +175,7 @@ export default class Cita extends Component {
                 </div>
                 {
                     this.state.agregar?
-                        <AgregarCita clientes={listaClientes} agregarcliente={this.handleId} agregarservicio={this.handleservicio} servicios={listaServicios} duracion={duracion} total={total} agregarCita={this.agregarCita}/>
+                        <AgregarCita clientes={listaClientes} mensaje={this.state.mensajeAgregar} agregarcliente={this.handleId} agregarservicio={this.handleservicio} servicios={listaServicios} duracion={duracion} total={total} agregarCita={this.agregarCita}/>
                     :
                     this.state.editar?
                         <EditarCita></EditarCita>

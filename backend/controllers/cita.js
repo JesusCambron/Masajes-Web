@@ -1,8 +1,9 @@
 const { mongo: { modelosMongoDB: { citaModel } } } = require("../database/index");
 
 const agregar = async (req, res) => {
+    const restarHora = 7;
     const {cliente, servicios, fecha, duracion, total} = req.body;
-    fechaInicio = new Date(fecha);
+    fechaInicio = new Date(new Date(fecha).getTime()-(restarHora*3600000));
     const fechaFinal = new Date(fechaInicio.getTime()+duracion*60000);
 
     //Valida si existe otra cita  a la misma hora

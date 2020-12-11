@@ -12,7 +12,8 @@ class AgregarClientes extends Component {
             correo:'',
             celular:'',
             clienteRecomendador:'',
-            listaClientes:[]
+            listaClientes:[],
+            mensaje: ''
         }
     }
     handleSubmit = e => {
@@ -45,11 +46,16 @@ class AgregarClientes extends Component {
             .then(response=>
                 response.text()
             )
-            .then(cliente=>
-                console.log(`editado ${cliente}`)
+            .then(cliente=>{
+                if(cliente!==`${this.state.nombre} ha sido actualizado`){
+                    this.setState({mensaje:'Error'})
+                }else{
+                    this.setState({mensaje:'Editado'})
+                }
+            }
             )
             .catch(err=>
-                console.log(err)
+                this.setState({mensaje:'Error al editar'})
             )
         }else if(this.props.location.esEliminar){
             fetch(`http://localhost:3000/masajes/clientes/${this.props.location.cliente._id}`,{
@@ -59,10 +65,10 @@ class AgregarClientes extends Component {
                 response.text()
             )
             .then(cliente=>
-                console.log(`eliminado ${cliente}`)
+                this.setState({mensaje:'Eliminado'})
             )
             .catch(err=>
-                console.log(err)
+                this.setState({mensaje:'Error al eliminar'})
             )
         }
         else{
@@ -74,11 +80,16 @@ class AgregarClientes extends Component {
             .then(response=>
                 response.text()
             )
-            .then(cliente=>
-                console.log(`registrado ${cliente}`)
+            .then(cliente=>{
+                if(cliente!==`${this.state.nombre} ha sido registrado`){
+                    this.setState({mensaje:'Error'})
+                }else{
+                    this.setState({mensaje:'Agregado'})
+                }
+            }
             )
             .catch(err=>
-                console.log(err)
+                this.setState({mensaje:'Error al agregar'})
             )
         }
 
@@ -177,6 +188,9 @@ class AgregarClientes extends Component {
                                     "Agregar"
                             }
                         </button>
+                        <div>
+                            {this.state.mensaje}
+                        </div>
                 </form>
             </div>
         );
